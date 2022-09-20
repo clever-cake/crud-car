@@ -10,7 +10,10 @@ spring:
   data:
     rest:
       basePath: "/api"
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
 
 
-server:
   context-path: "/api"
+

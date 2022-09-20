@@ -1,13 +1,19 @@
 ###
 
 POST http://localhost:8080/v1/car
+Content-Type: application/json
 
 {
-	brand": "dummy",
-	licensePlate": "MR-T-2442",
-	manufacturer": "dummy",
-	operationCity": "Marburg",
-	status": "running",
+    "id": 1,
+	"brand": "dummy",
+	"licensePlate": "MR-T-2442",
+	"manufacturer": "dummy",
+	"operationCity": "Marburg",
+	"status": "running"
 }
+
+###
+
+GET http://localhost:8080/v1/car/1
 
 ###
