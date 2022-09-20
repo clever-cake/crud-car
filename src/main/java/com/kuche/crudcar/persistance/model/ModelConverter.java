@@ -3,6 +3,9 @@ package com.kuche.crudcar.persistance.model;
 import com.kuche.crudcar.api.v1.model.CarDTO;
 import org.springframework.stereotype.Component;
 
+/**
+ * The class is a simple approach to decouple the {@link CarDTO} object, which is used for the json http api, from the entity class {@link PersistedCar}.
+ */
 @Component
 public class ModelConverter {
 
