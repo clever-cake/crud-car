@@ -18,7 +18,7 @@ public class CarDTO {
 	private String manufacturer;
 	private String operationCity;
 	private String status;
-	private String createdAt;
-	private String lastUpdatedAt;
+	private ZonedDateTime createdAt;
+	private ZonedDateTime lastUpdatedAt;
 
 }

@@ -4,7 +4,6 @@ import com.kuche.crudcar.api.v1.model.CarDTO;
 import com.kuche.crudcar.api.v1.model.CarValidation;
 import com.kuche.crudcar.persistance.CarPersistence;
 import lombok.AllArgsConstructor;
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
