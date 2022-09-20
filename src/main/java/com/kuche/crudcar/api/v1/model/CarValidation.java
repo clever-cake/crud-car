@@ -49,7 +49,7 @@ public class CarValidation {
 			Optional<CarDTO> updatedEntity = persistence.retrieveCarById(carDTO.getId());
 			if (updatedEntity.isPresent()) {
 				CarDTO entityToUpdate = updatedEntity.get();
-				if (entityToUpdate.getLastUpdatedAt() != null && !entityToUpdate.getLastUpdatedAt().equals(carDTO.getLastUpdatedAt())) {
+				if (entityToUpdate.getLastUpdatedAt() != null && entityToUpdate.getLastUpdatedAt().toInstant().toEpochMilli() != carDTO.getLastUpdatedAt().toInstant().toEpochMilli()) {
 					throw new ValidationException("The car to be updated does not match the last known representation of that car");
 				}
 			}

@@ -17,8 +17,6 @@ public class CarPersistence {
 
 	public CarDTO saveCar(CarDTO carDTO) {
 		PersistedCar savedEntity = carRepository.save(modelConverter.mapCar(carDTO));
-
-
 		return modelConverter.mapPersistedCar(savedEntity);
 	}
 

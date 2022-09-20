@@ -1,5 +1,6 @@
 package com.kuche.crudcar;
 
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.kuche.crudcar.api.v1.CarCrudController;
@@ -50,6 +51,29 @@ class CrudCarApplicationTests {
 	@Autowired
 	private CarCrudController carCrudController;
 
+
+	@Test
+	void saveAndVerifiesMetaData() {
+		CarDTO carDTOToSave = CarDTO.builder()
+				.brand("brand")
+				.licensePlate("MR-TT-2442")
+				.operationCity("Marburg")
+				.build();
+
+		ResponseEntity<CarDTO> responseEntity = carCrudController.updateCar(carDTOToSave);
+
+		assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+		CarDTO updatedCar = responseEntity.getBody();
+
+		assertThat(updatedCar).isNotNull();
+		assertThat(updatedCar.getBrand()).isEqualTo(carDTOToSave.getBrand());
+		assertThat(updatedCar.getLicensePlate()).isEqualTo(carDTOToSave.getLicensePlate());
+		assertThat(updatedCar.getOperationCity()).isEqualTo(carDTOToSave.getOperationCity());
+
+		assertThat(updatedCar.getCreatedAt()).isNotNull();
+		assertThat(updatedCar.getLastUpdatedAt()).isNotNull();
+	}
+
 	@Test
 	void saveAndRetrieveACar() {
 		String licensePlate = "MR-TT-2442";
@@ -69,6 +93,29 @@ class CrudCarApplicationTests {
 		assertThat(retrieveCarById.getBody())
 				.isNotNull()
 				.satisfies(carDTO -> StringUtils.equals(carDTO.getLicensePlate(), licensePlate));
+	}
+
+	@Test
+	void updatesAnExistingCar() {
+
+		CarDTO carDTOToCreate = CarDTO.builder()
+				.brand("brand")
+				.licensePlate("MR-TT-2442")
+				.operationCity("Marburg")
+				.build();
+
+		ResponseEntity<CarDTO> responseEntity = carCrudController.updateCar(carDTOToCreate);
+
+		CarDTO carToUpdate = responseEntity.getBody();
+		String updatedStatus = "new-status";
+		carToUpdate.setStatus(updatedStatus);
+
+		responseEntity = carCrudController.updateCar(carToUpdate);
+
+		CarDTO updatedCar = responseEntity.getBody();
+		assertThat(updatedCar.getStatus()).isEqualTo(updatedStatus);
+		assertThat(updatedCar.getCreatedAt()).isEqualTo(carToUpdate.getCreatedAt());
+		assertThat(updatedCar.getLastUpdatedAt()).isAfter(carToUpdate.getCreatedAt());
 	}
 
 }

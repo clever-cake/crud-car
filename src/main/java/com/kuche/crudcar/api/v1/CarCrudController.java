@@ -2,6 +2,7 @@ package com.kuche.crudcar.api.v1;
 
 import com.kuche.crudcar.api.v1.model.CarDTO;
 import com.kuche.crudcar.api.v1.model.CarValidation;
+import com.kuche.crudcar.api.v1.model.MetadataSetter;
 import com.kuche.crudcar.persistance.CarPersistence;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,17 +23,22 @@ public class CarCrudController {
 	private final CarValidation validator;
 	private final CarPersistence carPersistence;
 
+	private final MetadataSetter metadataSetter;
+
 
 	@PostMapping("/car")
 	public ResponseEntity<CarDTO> updateCar(@RequestBody CarDTO carDTO) {
 		log.info("Update a car {}", carDTO);
+
 		validator.validateCar(carDTO);
+		metadataSetter.updateMetaDataProperties(carDTO);
 
 		return ResponseEntity.ok(carPersistence.saveCar(carDTO));
 	}
 
 	@GetMapping("/car/{id}")
 	public ResponseEntity<CarDTO> retrieveCarById(@PathVariable Long id) {
+
 		return carPersistence.retrieveCarById(id)
 				.map(ResponseEntity::ok)
 				.orElse(ResponseEntity.notFound().build());
