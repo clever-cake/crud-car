@@ -1,8 +1,16 @@
 spring:
   application:
-    name: clevershuttle Car-crud
+    name: "clevershuttle Car-crud"
 
   datasource:
     url: "jdbc:postgresql://localhost:5432/cars"
     username: "postgres"
     password: "postgres"
+
+  data:
+    rest:
+      basePath: "/api"
+
+
+server:
+  context-path: "/api"

@@ -1,0 +1,13 @@
+###
+
+POST http://localhost:8080/v1/car
+
+{
+	brand": "dummy",
+	licensePlate": "MR-T-2442",
+	manufacturer": "dummy",
+	operationCity": "Marburg",
+	status": "running",
+}
+
+###

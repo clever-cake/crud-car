@@ -23,3 +23,6 @@ User: admin@admin.com
 Password: admin
 ```
 
+# Perform http requests
+
+If you use intellij you may use the predefined http requests in the file _requests.http_ to explore the api.
