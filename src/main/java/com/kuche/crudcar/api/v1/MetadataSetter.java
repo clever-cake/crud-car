@@ -1,5 +1,6 @@
-package com.kuche.crudcar.api.v1.model;
+package com.kuche.crudcar.api.v1;
 
+import com.kuche.crudcar.api.v1.model.CarDTO;
 import java.time.ZonedDateTime;
 import org.springframework.stereotype.Component;
 

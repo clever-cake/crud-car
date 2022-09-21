@@ -1,8 +1,6 @@
 package com.kuche.crudcar.api.v1;
 
 import com.kuche.crudcar.api.v1.model.CarDTO;
-import com.kuche.crudcar.api.v1.model.CarValidation;
-import com.kuche.crudcar.api.v1.model.MetadataSetter;
 import com.kuche.crudcar.persistance.CarPersistence;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,5 +1,7 @@
-package com.kuche.crudcar.api.v1.model;
+package com.kuche.crudcar.api.v1;
 
+import com.kuche.crudcar.api.v1.model.CarDTO;
+import com.kuche.crudcar.api.v1.model.ValidationException;
 import com.kuche.crudcar.persistance.CarPersistence;
 import java.util.Optional;
 import lombok.AllArgsConstructor;

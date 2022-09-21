@@ -1,8 +1,11 @@
-package com.kuche.crudcar.api.v1.model;
+package com.kuche.crudcar.api.v1;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.mockito.Mockito.when;
 
+import com.kuche.crudcar.api.v1.CarValidation;
+import com.kuche.crudcar.api.v1.model.CarDTO;
+import com.kuche.crudcar.api.v1.model.ValidationException;
 import com.kuche.crudcar.persistance.CarPersistence;
 import java.time.Instant;
 import java.time.ZoneId;
@@ -21,7 +24,6 @@ class CarValidationTest {
 
 	@Mock
 	private CarPersistence carPersistence;
-
 
 	@InjectMocks
 	private CarValidation carValidation;

@@ -1,7 +1,9 @@
-package com.kuche.crudcar.api.v1.model;
+package com.kuche.crudcar.api.v1;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.kuche.crudcar.api.v1.MetadataSetter;
+import com.kuche.crudcar.api.v1.model.CarDTO;
 import java.time.ZonedDateTime;
 import org.junit.jupiter.api.Test;
 
