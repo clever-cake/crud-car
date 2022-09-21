@@ -1,7 +1,6 @@
 package com.kuche.crudcar.api.v1.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.ZonedDateTime;
 import org.junit.jupiter.api.Test;

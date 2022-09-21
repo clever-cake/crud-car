@@ -9,7 +9,7 @@ Content-Type: application/json
 	"licensePlate": "MR-T-2442",
 	"manufacturer": "dummy",
 	"operationCity": "Marburg",
-	"status": "running"
+	"status": "in_maintenance"
 }
 
 ###

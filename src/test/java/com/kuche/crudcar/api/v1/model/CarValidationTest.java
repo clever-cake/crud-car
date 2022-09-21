@@ -1,7 +1,6 @@
 package com.kuche.crudcar.api.v1.model;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 
 import com.kuche.crudcar.persistance.CarPersistence;
@@ -71,8 +70,6 @@ class CarValidationTest {
 
 	@Test
 	void aNewCarMayNotHaveACreationAndLastModificationDate() {
-		when(carPersistence.retrieveCarById(anyLong())).thenReturn(Optional.empty());
-
 		CarDTO invalidCar = CarDTO.builder()
 				.lastUpdatedAt(ZonedDateTime.ofInstant(Instant.ofEpochMilli(100),
 						ZoneId.systemDefault()))

@@ -1,15 +1,12 @@
 package com.kuche.crudcar;
 
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.kuche.crudcar.api.v1.CarCrudController;
 import com.kuche.crudcar.api.v1.model.CarDTO;
-import java.util.Map;
+import com.kuche.crudcar.api.v1.model.Status;
 import org.apache.commons.lang3.StringUtils;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.util.TestPropertyValues;
@@ -18,15 +15,14 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
-import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 @SpringBootTest
 @Testcontainers
-@ContextConfiguration(initializers = CrudCarApplicationTests.TestEnvInitializer.class)
-class CrudCarApplicationTests {
+@ContextConfiguration(initializers = CrudCarIntegrationTests.TestEnvInitializer.class)
+class CrudCarIntegrationTests {
 
 	@Container
 	private static final PostgreSQLContainer postgres = new PostgreSQLContainer("postgres:14.2-alpine")
@@ -107,13 +103,12 @@ class CrudCarApplicationTests {
 		ResponseEntity<CarDTO> responseEntity = carCrudController.updateCar(carDTOToCreate);
 
 		CarDTO carToUpdate = responseEntity.getBody();
-		String updatedStatus = "new-status";
-		carToUpdate.setStatus(updatedStatus);
+		carToUpdate.setStatus(Status.AVAILABLE);
 
 		responseEntity = carCrudController.updateCar(carToUpdate);
 
 		CarDTO updatedCar = responseEntity.getBody();
-		assertThat(updatedCar.getStatus()).isEqualTo(updatedStatus);
+		assertThat(updatedCar.getStatus()).isEqualTo(Status.AVAILABLE);
 		assertThat(updatedCar.getCreatedAt()).isEqualTo(carToUpdate.getCreatedAt());
 		assertThat(updatedCar.getLastUpdatedAt()).isAfter(carToUpdate.getCreatedAt());
 	}

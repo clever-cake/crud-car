@@ -17,7 +17,7 @@ public class CarDTO {
 	private String licensePlate;
 	private String manufacturer;
 	private String operationCity;
-	private String status;
+	private Status status;
 	private ZonedDateTime createdAt;
 	private ZonedDateTime lastUpdatedAt;
 
